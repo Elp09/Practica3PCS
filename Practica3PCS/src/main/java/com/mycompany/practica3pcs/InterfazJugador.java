@@ -1,11 +1,17 @@
 package com.mycompany.practica3pcs;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class InterfazJugador extends javax.swing.JFrame {
 
     public InterfazJugador() {
         initComponents();
+        btnSalarioPorPosicion.setEnabled(false);
 
         //cbox
         for (Posicion posicion : Posicion.values()) {
@@ -56,6 +62,7 @@ public class InterfazJugador extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        btnSalarioPorPosicion = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblJugadores = new javax.swing.JTable();
@@ -130,6 +137,16 @@ public class InterfazJugador extends javax.swing.JFrame {
             }
         });
 
+        btnSalarioPorPosicion.setBackground(new java.awt.Color(102, 102, 102));
+        btnSalarioPorPosicion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSalarioPorPosicion.setForeground(new java.awt.Color(0, 204, 204));
+        btnSalarioPorPosicion.setText("Salario por posicion");
+        btnSalarioPorPosicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalarioPorPosicionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -164,11 +181,12 @@ public class InterfazJugador extends javax.swing.JFrame {
                             .addComponent(txtPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(85, 85, 85)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnSalarioPorPosicion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 8, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -208,7 +226,9 @@ public class InterfazJugador extends javax.swing.JFrame {
                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSalarioPorPosicion, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
@@ -229,6 +249,7 @@ public class InterfazJugador extends javax.swing.JFrame {
         tblJugadores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblJugadoresMouseClicked(evt);
+                tblJugadoresMouseClickedData(evt);
             }
         });
         jScrollPane1.setViewportView(tblJugadores);
@@ -246,8 +267,8 @@ public class InterfazJugador extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -265,10 +286,10 @@ public class InterfazJugador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -280,6 +301,7 @@ public class InterfazJugador extends javax.swing.JFrame {
             jugador.agregar();
             mostrar_jugadores();
             limpiar();
+            btnSalarioPorPosicion.setEnabled(false);
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this,
@@ -302,6 +324,7 @@ public class InterfazJugador extends javax.swing.JFrame {
                 jugador.modificar();
                 mostrar_jugadores();
                 limpiar();
+                btnSalarioPorPosicion.setEnabled(false);
             }
 
         } catch (NumberFormatException e) {
@@ -313,6 +336,7 @@ public class InterfazJugador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void tblJugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblJugadoresMouseClicked
+        btnSalarioPorPosicion.setEnabled(true);
         int fila = tblJugadores.getSelectedRow();
 
         txtId.setText(tblJugadores.getValueAt(fila, 0).toString());
@@ -326,9 +350,11 @@ public class InterfazJugador extends javax.swing.JFrame {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiar();
+        btnSalarioPorPosicion.setEnabled(false);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        
         if (txtId.getText().equals("") || txtId.getText() == null) {
             JOptionPane.showMessageDialog(this,
                     "Por favor seleccione un jugador en la tabla",
@@ -344,6 +370,7 @@ public class InterfazJugador extends javax.swing.JFrame {
                 jugador.eliminar();
                 mostrar_jugadores();
                 limpiar();
+                btnSalarioPorPosicion.setEnabled(false);
             } else {
                 JOptionPane.showMessageDialog(this, "Eliminacion cancelada.");
             }
@@ -351,6 +378,42 @@ public class InterfazJugador extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnSalarioPorPosicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalarioPorPosicionActionPerformed
+        DatosJugadores data = new DatosJugadores();
+        data.setLocationRelativeTo(null);
+        data.setVisible(true);
+        try {
+            Socket cliente = new Socket("127.0.0.1", 6100);
+            DataInputStream in = new DataInputStream(cliente.getInputStream());
+            DataOutputStream out = new DataOutputStream(cliente.getOutputStream());
+            
+            out.writeUTF(txtId.getText());
+            out.writeUTF(txtNombre.getText());
+            out.writeUTF(cbPosicion.getSelectedItem().toString());
+            out.writeUTF(txtEdad.getText());
+            out.writeUTF(cbEquipo.getSelectedItem().toString());
+            out.writeUTF(txtPuntuacion.getText());
+             
+            cliente.close();
+        } catch (IOException e) {
+            System.out.println(e.toString());
+        }
+
+    }//GEN-LAST:event_btnSalarioPorPosicionActionPerformed
+
+    private void tblJugadoresMouseClickedData(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblJugadoresMouseClickedData
+        int fila = tblJugadores.getSelectedRow();
+        
+    }//GEN-LAST:event_tblJugadoresMouseClickedData
+    public Jugador obtenerJugadorPosicion(String modelo) {
+        for (Jugador jugador : jugadores) {
+            if (jugador.getPosicion().equals(modelo)) {
+                return jugador;
+            }
+        }
+        return null;
+    }
 
     public Jugador crear_modificar_jugador() {
         Jugador jugador = new Jugador(Integer.parseInt(txtId.getText()),
@@ -371,12 +434,13 @@ public class InterfazJugador extends javax.swing.JFrame {
 
         return jugador;
     }
-
+    ArrayList<Jugador> jugadores;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnSalarioPorPosicion;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbEquipo;

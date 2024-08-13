@@ -16,6 +16,7 @@ public class Jugador {
     private Equipo equipo;
     private double puntuacionMedia;
 
+    
     //CREAR
     public Jugador(String nombre, Posicion posicion, int edad, Equipo equipo, double puntuacionMedia) {
         this.nombre = nombre;
