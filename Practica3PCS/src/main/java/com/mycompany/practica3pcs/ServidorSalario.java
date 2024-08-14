@@ -23,22 +23,22 @@ public class ServidorSalario {
                 String posicion = in.readUTF();
                 switch (posicion) {
                     case "Escolta":
-                        out.writeUTF("El salario de un escolta es de 1,200,000 colones");
+                        out.writeUTF("₡ 1,200,000 ");
                         break;
                     case "Base":
-                        out.writeUTF("El salario de un base es de 1,000,000 colones");
+                        out.writeUTF("₡1,000,000");
                         break;
                     case "Alero":
-                        out.writeUTF("El salario de un alero es de 1,100,000 colones");
+                        out.writeUTF("₡1,100,000");
                         break;
                     case "Ala_Pívot":
-                        out.writeUTF("El salario de un ala pivot es de 1,300,000 colones");
+                        out.writeUTF("₡1,300,000");
                         break;
                     case "Pívot":
-                        out.writeUTF("El salario de un pivtot es de 1,400,000 colones");
+                        out.writeUTF("₡1,400,000");
                         break;
                     default:
-                        out.writeUTF("Posicion no encontradaadadadadada");
+                        out.writeUTF("Posicion no encontrada.");
                         break;
                 }
 

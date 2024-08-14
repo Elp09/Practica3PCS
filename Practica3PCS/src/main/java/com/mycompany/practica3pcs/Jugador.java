@@ -15,6 +15,7 @@ public class Jugador {
     private int edad;
     private Equipo equipo;
     private double puntuacionMedia;
+    private int salario;
 
     
     //CREAR
@@ -35,7 +36,8 @@ public class Jugador {
         this.equipo = equipo;
         this.puntuacionMedia = puntuacionMedia;
     }
-
+    
+    
     //BORRAR
     public Jugador(int id) {
         this.id = id;
@@ -186,6 +188,7 @@ public class Jugador {
             conexion.desconectar();
         }
     }
+    
 
     public int getId() {
         return id;
@@ -237,5 +240,14 @@ public class Jugador {
     public void setPuntuacionMedia(double puntuacionMedia) {
         this.puntuacionMedia = puntuacionMedia;
     }
+
+    public int getSalario() {
+        return salario;
+    }
+
+    public void setSalario(int salario) {
+        this.salario = salario;
+    }
+    
 
 }

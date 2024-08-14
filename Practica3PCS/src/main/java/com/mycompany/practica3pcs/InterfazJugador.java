@@ -38,6 +38,8 @@ public class InterfazJugador extends javax.swing.JFrame {
 
     public void mostrar_jugadores() {
         tblJugadores.setModel(Jugador.consultar());
+        DatosJugadores data = new DatosJugadores();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -157,44 +159,45 @@ public class InterfazJugador extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSalarioPorPosicion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSalario)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(15, 15, 15))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(4, 4, 4)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(15, 15, 15))
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(cbPosicion, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtSalario)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(15, 15, 15))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel3)
+                                                .addGap(4, 4, 4)))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(15, 15, 15))
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(cbPosicion, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnSalarioPorPosicion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 8, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -228,7 +231,7 @@ public class InterfazJugador extends javax.swing.JFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -238,7 +241,7 @@ public class InterfazJugador extends javax.swing.JFrame {
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalarioPorPosicion, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
@@ -259,7 +262,6 @@ public class InterfazJugador extends javax.swing.JFrame {
         tblJugadores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblJugadoresMouseClicked(evt);
-                tblJugadoresMouseClickedData(evt);
             }
         });
         jScrollPane1.setViewportView(tblJugadores);
@@ -277,7 +279,7 @@ public class InterfazJugador extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -345,26 +347,13 @@ public class InterfazJugador extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
-    private void tblJugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblJugadoresMouseClicked
-        btnSalarioPorPosicion.setEnabled(true);
-        int fila = tblJugadores.getSelectedRow();
-
-        txtId.setText(tblJugadores.getValueAt(fila, 0).toString());
-        txtNombre.setText(tblJugadores.getValueAt(fila, 1).toString());
-        cbPosicion.setSelectedItem(tblJugadores.getValueAt(fila, 2).toString());
-        txtEdad.setText(tblJugadores.getValueAt(fila, 3).toString());
-        cbEquipo.setSelectedItem(tblJugadores.getValueAt(fila, 4).toString());
-        txtPuntuacion.setText(tblJugadores.getValueAt(fila, 5).toString());
-
-    }//GEN-LAST:event_tblJugadoresMouseClicked
-
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiar();
         btnSalarioPorPosicion.setEnabled(false);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        
+
         if (txtId.getText().equals("") || txtId.getText() == null) {
             JOptionPane.showMessageDialog(this,
                     "Por favor seleccione un jugador en la tabla",
@@ -390,31 +379,45 @@ public class InterfazJugador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnSalarioPorPosicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalarioPorPosicionActionPerformed
-//        DatosJugadores data = new DatosJugadores();
-//        data.setLocationRelativeTo(null);
-//        data.setVisible(true);
+        DatosJugadores data = new DatosJugadores();
+        data.setLocationRelativeTo(null);
+        data.setVisible(true);
+
         try {
             Socket cliente = new Socket("127.0.0.1", 6100);
             DataInputStream in = new DataInputStream(cliente.getInputStream());
             DataOutputStream out = new DataOutputStream(cliente.getOutputStream());
 
             out.writeUTF(cbPosicion.getSelectedItem().toString());
-            
+
             String mensajeSalario = in.readUTF();
-            txtSalario.setVisible(true);
+            
             txtSalario.setText(mensajeSalario);
-             
+
+            data.ponerInformacion(Jugador.consultar(), tblJugadores.getSelectedRow(), mensajeSalario);
             cliente.close();
+
         } catch (IOException e) {
             System.out.println(e.toString());
         }
+        
+
 
     }//GEN-LAST:event_btnSalarioPorPosicionActionPerformed
 
-    private void tblJugadoresMouseClickedData(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblJugadoresMouseClickedData
+    private void tblJugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblJugadoresMouseClicked
+        btnSalarioPorPosicion.setEnabled(true);
         int fila = tblJugadores.getSelectedRow();
-        
-    }//GEN-LAST:event_tblJugadoresMouseClickedData
+
+        txtId.setText(tblJugadores.getValueAt(fila, 0).toString());
+        txtNombre.setText(tblJugadores.getValueAt(fila, 1).toString());
+        cbPosicion.setSelectedItem(tblJugadores.getValueAt(fila, 2).toString());
+        txtEdad.setText(tblJugadores.getValueAt(fila, 3).toString());
+        cbEquipo.setSelectedItem(tblJugadores.getValueAt(fila, 4).toString());
+        txtPuntuacion.setText(tblJugadores.getValueAt(fila, 5).toString());
+
+
+    }//GEN-LAST:event_tblJugadoresMouseClicked
     public Jugador obtenerJugadorPosicion(String modelo) {
         for (Jugador jugador : jugadores) {
             if (jugador.getPosicion().equals(modelo)) {
@@ -463,7 +466,7 @@ public class InterfazJugador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblID;
-    private javax.swing.JTable tblJugadores;
+    public javax.swing.JTable tblJugadores;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
