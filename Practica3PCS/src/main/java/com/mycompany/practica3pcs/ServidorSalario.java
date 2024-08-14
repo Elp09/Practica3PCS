@@ -20,19 +20,10 @@ public class ServidorSalario {
                 DataInputStream in = new DataInputStream(cliente.getInputStream());
                 DataOutputStream out = new DataOutputStream(cliente.getOutputStream());
 
-                String id = in.readUTF();
-                out.writeUTF(id);
-                System.out.println("Id: " + id);
-
-                String nombre = in.readUTF();
-                out.writeUTF(nombre);
-                System.out.println("Nombre: " + nombre);
-
                 String posicion = in.readUTF();
                 switch (posicion) {
                     case "Escolta":
                         out.writeUTF("El salario de un escolta es de 1,200,000 colones");
-                        System.out.println("Salario de un escolta: 1,200,000 colones");
                         break;
                     case "Base":
                         out.writeUTF("El salario de un base es de 1,000,000 colones");
@@ -50,18 +41,6 @@ public class ServidorSalario {
                         out.writeUTF("Posicion no encontradaadadadadada");
                         break;
                 }
-
-                String edad = in.readUTF();
-                out.writeUTF(edad);
-                System.out.println("edad: " + edad);
-
-                String equipo = in.readUTF();
-                out.writeUTF(equipo);
-                System.out.println("equipo: " + equipo);
-
-                String puntuacionMedia = in.readUTF();
-                out.writeUTF(puntuacionMedia);
-                System.out.println("puntuacion media: " + puntuacionMedia);
 
                 count++;
                 cliente.close();
